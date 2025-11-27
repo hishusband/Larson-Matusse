@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content="width=device-width, initial-scale=1.0">
+    <title>Portifólio melhorado</title>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.7.0/fonts/remixicon.css" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "poppins", sans-serif;
+        }
+
+        body {
+            height: 100vh;
+            background: url(src/Imagens/background\ 2.jpg ) no-repeat center; 
+            padding: 10px 5%;
+        }
+
+        .conteiner {
+            position: relative;
+            height: 100%;
+            background: rgba(255, 255, 255, .1);
+            border: 2px solid rgba(255, 255, 255, .2);
+            border-radius: 20px;
+            backdrop-filter: blur(60px);
+            transform: scale(0);
+            animation: zoom-in 1s ease forwards;
+        }
+
+        @keyframes zoom-in {
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 15px 3%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .animated {
+            transform: translateY(30px);
+            opacity: 0;
+            animation: slide-in 1s ease forwards;
+            animation-delay: 1s;
+        }
+
+        @keyframes slide-in {
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .logo {
+            font-size: 22px;
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+            z-index: 101;
+        }
+
+        .navbar {
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar a {
+            font-size: 16px;
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            margin-left: 25px;
+            border-bottom: 2px solid transparent;
+            transition: .5s;
+        }
+
+        .navbar a:hover,
+        .navbar a.active {
+            border-color: #fff;
+        }
+
+        /* Menu Hamburger */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            z-index: 101;
+        }
+
+        .menu-toggle span {
+            width: 22px;
+            height: 2.5px;
+            background: #fff;
+            margin: 3px 0;
+            transition: 0.3s;
+            border-radius: 2px;
+        }
+
+        .iniciar {
+            display: flex;
+            align-items: center;
+            height: 100%;
+            gap: 40px;
+            padding: 40px 3% 0;
+            color: #fff;
+            animation-delay: 1.5s;
+        }
+
+        .iniciar-detail h1 {
+            font-size: 45px;
+            line-height: 1;
+        }
+
+        .iniciar-detail h2, h2 {
+            font-size: 28px;
+            color: #fff;
+        }
+
+        .iniciar-detail h2, p {
+            margin: 8px 0 15px;
+            color: #fff;
+        }
+
+        .iniciar-detail .download-social {
+            display: flex;
+            align-items: center;
+        }
+
+        .bnt {
+            display: inline-block;
+            padding: 8px 20px;
+            background: #fff;
+            border: 2px solid #fff;
+            border-radius: 30px;
+            box-shadow: 0 0 8px #fff;
+            color: #333;
+            text-decoration: none;
+            font-weight: 500;
+            transition: .5s;
+            font-size: 14px;
+        }
+
+        .bnt:hover {
+           background: transparent;
+           box-shadow: none;
+           color: #fff;
+        }
+
+        .iniciar-detail .social-icons {
+            margin-left: 15px;
+        }
+
+        .iniciar-detail .social-icons a {
+            display: inline-flex;
+            padding: 6px;
+            border: 2px solid #fff;
+            border-radius: 50%;
+            font-size: 16px;
+            color: #fff;
+            text-decoration: none;
+            margin: 0 6px;
+            transition: .5s;
+        }
+
+        .iniciar-detail .social-icons a:hover {
+            background: #fff;
+            box-shadow: 0 0 10px #fff;
+            color: #333;
+        }
+
+        .iniciar-img .img-box {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            border: 2px solid #fff;
+            border-radius: 50%;
+            box-shadow: 0 0 15px #fff;
+            overflow: hidden;
+        }
+
+        .iniciar-img .img-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Media Queries para responsividade extrema */
+        @media screen and (max-width: 1024px) {
+            .iniciar-detail h1 {
+                font-size: 40px;
+            }
+            
+            .iniciar-detail h2 {
+                font-size: 24px;
+            }
+            
+            .iniciar-img .img-box {
+                width: 280px;
+                height: 280px;
+            }
+        }
+
+        @media screen and (max-width: 880px) {
+            body {
+                padding: 15px 2%;
+                height: auto;
+                min-height: 100vh;
+            }
+            
+            .conteiner {
+                height: auto;
+                min-height: calc(100vh - 30px);
+            }
+            
+            .iniciar {
+                flex-direction: column-reverse;
+                text-align: center;
+                gap: 25px;
+                padding: 70px 3% 30px;
+            }
+            
+            .iniciar-detail h1 {
+                font-size: 35px;
+            }
+            
+            .iniciar-detail h2 {
+                font-size: 22px;
+            }
+            
+            .iniciar-img .img-box {
+                width: 250px;
+                height: 250px;
+            }
+            
+            .iniciar-detail .download-social {
+                justify-content: center;
+                flex-wrap: wrap;
+                gap: 12px;
+            }
+            
+            .iniciar-detail .social-icons {
+                margin-left: 0;
+            }
+        }
+
+        /* Mobile - Menu Hamburger */
+        @media screen and (max-width: 768px) {
+            header {
+                padding: 12px 3%;
+            }
+            
+            .menu-toggle {
+                display: flex;
+            }
+            
+            .navbar {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 85%;
+                height: 100vh;
+                background: rgba(0, 0, 0, 0.95);
+                backdrop-filter: blur(20px);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                transition: 0.5s;
+                z-index: 100;
+            }
+            
+            .navbar.active {
+                right: 0;
+            }
+            
+            .navbar a {
+                margin: 12px 0;
+                font-size: 18px;
+                margin-left: 0;
+            }
+            
+            /* Animação do menu hamburger */
+            .menu-toggle.active span:nth-child(1) {
+                transform: rotate(-45deg) translate(-4px, 5px);
+            }
+            
+            .menu-toggle.active span:nth-child(2) {
+                opacity: 0;
+            }
+            
+            .menu-toggle.active span:nth-child(3) {
+                transform: rotate(45deg) translate(-4px, -5px);
+            }
+            
+            .iniciar {
+                padding: 60px 2% 25px;
+            }
+            
+            .iniciar-detail h1 {
+                font-size: 30px;
+            }
+            
+            .iniciar-detail h2 {
+                font-size: 20px;
+            }
+            
+            .iniciar-img .img-box {
+                width: 220px;
+                height: 220px;
+            }
+            
+            .bnt {
+                padding: 7px 16px;
+                font-size: 13px;
+            }
+            
+            .iniciar-detail .social-icons a {
+                padding: 5px;
+                font-size: 14px;
+                margin: 0 4px;
+            }
+        }
+
+        /* Mobile pequeno */
+        @media screen and (max-width: 480px) {
+            body {
+                padding: 10px 2%;
+            }
+            
+            .conteiner {
+                border-radius: 15px;
+            }
+            
+            .iniciar {
+                padding: 50px 2% 20px;
+                gap: 20px;
+            }
+            
+            .iniciar-detail h1 {
+                font-size: 26px;
+            }
+            
+            .iniciar-detail h2 {
+                font-size: 18px;
+            }
+            
+            .iniciar-detail p {
+                font-size: 14px;
+            }
+            
+            .iniciar-img .img-box {
+                width: 200px;
+                height: 200px;
+            }
+            
+            .download-social {
+                flex-direction: column;
+                align-items: center;
+                gap: 12px;
+            }
+            
+            .navbar {
+                width: 90%;
+            }
+            
+            .iniciar-detail .social-icons a {
+                margin: 0 3px;
+            }
+        }
+
+        /* Mobile muito pequeno */
+        @media screen and (max-width: 360px) {
+            body {
+                padding: 8px 1%;
+            }
+            
+            .iniciar-detail h1 {
+                font-size: 24px;
+            }
+            
+            .iniciar-detail h2 {
+                font-size: 17px;
+            }
+            
+            .iniciar-img .img-box {
+                width: 180px;
+                height: 180px;
+            }
+            
+            .bnt {
+                padding: 6px 14px;
+                font-size: 12px;
+            }
+            
+            .logo {
+                font-size: 20px;
+            }
+            
+            .iniciar-detail .social-icons a {
+                width: 32px;
+                height: 32px;
+                font-size: 13px;
+                padding: 4px;
+            }
+        }
+
+        /* Para telas extremamente pequenas (menos de 320px) */
+        @media screen and (max-width: 320px) {
+            body {
+                padding: 5px 1%;
+            }
+            
+            .conteiner {
+                border-radius: 12px;
+            }
+            
+            .iniciar {
+                padding: 45px 1% 15px;
+                gap: 15px;
+            }
+            
+            .iniciar-detail h1 {
+                font-size: 22px;
+            }
+            
+            .iniciar-detail h2 {
+                font-size: 16px;
+            }
+            
+            .iniciar-detail p {
+                font-size: 13px;
+            }
+            
+            .iniciar-img .img-box {
+                width: 160px;
+                height: 160px;
+            }
+            
+            .bnt {
+                padding: 5px 12px;
+                font-size: 11px;
+            }
+            
+            .logo {
+                font-size: 18px;
+            }
+            
+            .navbar {
+                width: 95%;
+            }
+            
+            .iniciar-detail .social-icons a {
+                width: 30px;
+                height: 30px;
+                font-size: 12px;
+                margin: 0 2px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    
+    <div class="conteiner">
+        <header class="animated">
+            <a href="#" class="logo">Portifolio.</a>
+
+            <div class="menu-toggle" id="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+                <nav class="navbar" id="navbar">
+                    <a href="index.html">Inicio</a>
+                    <a href="sobre.html">Sobre</a>
+                    <a href="projectos.html">Projectos</a>
+                    <a href="habilidades.html">Habilidades</a>
+                    <a href="contactos.html">Contactos</a>
+                </nav>
+        </header>
+        
+        <section class="iniciar animated" id="index.html">
+            <div class="iniciar-detail">
+                <h1>Larson Matusse</h1>
+                <h2>Desenvolvedor Frontend</h2>
+                    <p>
+                      A tecnologia conecta o mundo — e eu quero fazer parte dessa conexão.
+                     Cada projeto aqui representa um passo na construção do meu futuro como profissional de TI. 
+                      <strong>
+                        Bem-vindo ao meu portfólio!
+                      </strong> 
+
+                    </p>
+                <div class="download-social">
+                    <a href="src/Curriculum vitae.docx" class="bnt">Download CV</a>
+                    <div class="social-icons">
+                        <a href="https://wa.me/SEUNUMERO" target="_blank"><i class="ri-whatsapp-fill"></i></a>
+                        <a href="https://www.facebook.com/" target="_blank"><i class="ri-facebook-circle-fill"></i></a>
+                        <a href="https://www.youtube.com/" target="_blank"><i class="ri-youtube-fill"></i></a>
+                        <a href="https://discord.com/channels/@me" target="_blank"><i class="ri-discord-fill"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="iniciar-img">
+                <div class="img-box">
+                    <img src="src/Imagens/Imagem 1.png" alt="foto 1">
+                </div>
+            </div>
+        </section>
+    </div>
+    
+    <script>
+        // Menu Hamburger
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navbar = document.getElementById('navbar');
+        
+        mobileMenu.addEventListener('click', function() {
+            this.classList.toggle('active');
+            navbar.classList.toggle('active');
+        });
+        
+        // Fechar menu ao clicar em um link
+        const navLinks = document.querySelectorAll('.navbar a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+                navbar.classList.remove('active');
+            });
+        });
+        
+        // Fechar menu ao clicar fora dele
+        document.addEventListener('click', (e) => {
+            if (!navbar.contains(e.target) && !mobileMenu.contains(e.target)) {
+                mobileMenu.classList.remove('active');
+                navbar.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>

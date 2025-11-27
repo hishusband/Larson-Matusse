@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Projectos</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src='main.js'></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "poppins", sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    background: url(src/Imagens/background\ 2.jpg) no-repeat center / cover;
+    padding: 50px 5%;
+    overflow-x: hidden;
+}
+
+.conteiner {
+    position: relative;
+    min-height: 100%;
+    background: rgba(255, 255, 255, .1);
+    border: 2px solid rgba(255, 255, 255, .2);
+    border-radius: 30px;
+    backdrop-filter: blur(30px);
+    transform: scale(0);
+    animation: zoom-in 1s ease forwards;
+    padding: 20px;
+}
+
+@keyframes zoom-in {
+    100% {
+        transform: scale(1);
+    }
+}
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 25px 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+}
+
+.animated {
+    transform: translateY(30px);
+    opacity: 0;
+    animation: slide-in 1s ease forwards;
+    animation-delay: 1s;
+}
+
+@keyframes slide-in {
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.logo {
+    font-size: 25px;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    z-index: 101;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+}
+
+.navbar a {
+    font-size: 18px;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+    margin-left: 35px;
+    border-bottom: 2px solid transparent;
+    transition: .5s;
+}
+
+.navbar a:hover,
+.navbar a.active {
+    border-color: #fff;
+}
+
+/* Menu Hamburger */
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    z-index: 101;
+}
+
+.menu-toggle span {
+    width: 25px;
+    height: 3px;
+    background: #fff;
+    margin: 3px 0;
+    transition: 0.3s;
+    border-radius: 2px;
+}
+
+.projects-section {
+    padding-top: 100px;
+    text-align: center;
+}
+
+.projects-section h1 {
+    font-size: 2.5rem;
+    color: #fff;
+    margin-bottom: 2rem;
+    transform: none;
+}
+
+.projects-container {
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    padding: 2rem;
+    align-items: start;
+}
+
+/* flip-card layout */
+.flip-card {
+    perspective: 1200px;
+    width: 100%;
+    max-width: 420px;
+    margin: 0 auto;
+}
+
+.flip-inner {
+    position: relative;
+    width: 100%;
+    padding-top: 70%;
+    transform-style: preserve-3d;
+    transition: transform .7s cubic-bezier(.2,.8,.2,1);
+}
+
+.flip-card:hover .flip-inner { 
+    transform: rotateY(180deg); 
+}
+
+.flip-front, .flip-back {
+    position: absolute;
+    inset: 0;
+    border-radius: 14px;
+    backface-visibility: hidden;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+    display: flex; 
+    flex-direction: column;
+    justify-content: center; 
+    align-items: center;
+}
+
+.flip-front img { 
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover; 
+    display: block; 
+}
+
+.flip-front .project-label { 
+    position: absolute; 
+    left: 12px; 
+    bottom: 12px; 
+    color: #fff; 
+    background: rgba(0,0,0,0.45); 
+    padding: 8px 12px; 
+    border-radius: 10px; 
+    font-weight: 700; 
+}
+
+.flip-back { 
+    transform: rotateY(180deg); 
+    padding: 18px; 
+    background: linear-gradient(120deg, rgba(6,6,6,0.6), rgba(20,20,20,0.8)); 
+    color: #fff; 
+    text-align: left; 
+    justify-content: flex-start;
+}
+
+.flip-back h3 { 
+    margin: 0 0 6px; 
+    font-size: 1.1rem; 
+}
+
+.flip-back p { 
+    margin: 0 0 10px; 
+    opacity: 0.95; 
+    line-height: 1.4; 
+    transform: none;
+}
+
+.flip-back .meta { 
+    font-size: 0.9rem; 
+    color: rgba(255,255,255,0.7); 
+    margin-top: 8px; 
+}
+
+.btn-links {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.btn {
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    font-size: 0.9rem;
+    border-radius: 8px;
+    color: #fff;
+    background: #00000050;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background: #00000090;
+}
+
+/* ========== MEDIA QUERIES ========== */
+
+/* Tablets */
+@media screen and (max-width: 1024px) {
+    .projects-container {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        padding: 1.5rem;
+    }
+    
+    .projects-section h1 {
+        font-size: 2.2rem;
+    }
+}
+
+/* Tablets pequenos */
+@media screen and (max-width: 880px) {
+    body {
+        padding: 30px 3%;
+    }
+    
+    .projects-container {
+        padding: 1rem;
+        gap: 1.5rem;
+    }
+    
+    .flip-inner {
+        padding-top: 75%;
+    }
+    
+    .projects-section h1 {
+        font-size: 2rem;
+        margin-bottom: 1.5rem;
+    }
+}
+
+/* Mobile - Menu Hamburger */
+@media screen and (max-width: 768px) {
+    header {
+        padding: 15px 5%;
+    }
+    
+    .menu-toggle {
+        display: flex;
+    }
+    
+    .navbar {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 70%;
+        height: 100vh;
+        background: rgba(0, 0, 0, 0.9);
+        backdrop-filter: blur(20px);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        transition: 0.5s;
+        z-index: 100;
+    }
+    
+    .navbar.active {
+        right: 0;
+    }
+    
+    .navbar a {
+        margin: 15px 0;
+        font-size: 20px;
+        margin-left: 0;
+    }
+    
+    /* Animação do menu hamburger */
+    .menu-toggle.active span:nth-child(1) {
+        transform: rotate(-45deg) translate(-5px, 6px);
+    }
+    
+    .menu-toggle.active span:nth-child(2) {
+        opacity: 0;
+    }
+    
+    .menu-toggle.active span:nth-child(3) {
+        transform: rotate(45deg) translate(-5px, -6px);
+    }
+    
+    .projects-section {
+        padding-top: 80px;
+    }
+    
+    .projects-container {
+        grid-template-columns: 1fr;
+        max-width: 400px;
+        margin: 0 auto;
+    }
+    
+    .projects-section h1 {
+        font-size: 1.8rem;
+    }
+}
+
+/* Mobile pequeno */
+@media screen and (max-width: 480px) {
+    body {
+        padding: 20px 2%;
+    }
+    
+    .projects-section {
+        padding-top: 70px;
+    }
+    
+    .projects-container {
+        padding: 0.5rem;
+        gap: 1rem;
+    }
+    
+    .projects-section h1 {
+        font-size: 1.6rem;
+        margin-bottom: 1rem;
+    }
+    
+    .flip-back {
+        padding: 15px;
+    }
+    
+    .flip-back h3 {
+        font-size: 1rem;
+    }
+    
+    .flip-back p {
+        font-size: 0.9rem;
+    }
+    
+    .navbar {
+        width: 80%;
+    }
+}
+
+/* Mobile muito pequeno */
+@media screen and (max-width: 360px) {
+    .projects-section h1 {
+        font-size: 1.4rem;
+    }
+    
+    .flip-front .project-label {
+        font-size: 0.9rem;
+        padding: 6px 10px;
+    }
+    
+    .logo {
+        font-size: 20px;
+    }
+}
+</style>
+
+<body> 
+    <div class="conteiner"> 
+        <header class="animated">
+            <a href="#" class="logo">Portifolio.</a>
+
+            <div class="menu-toggle" id="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+            <nav class="navbar" id="navbar">
+                <a href="index.html">Inicio</a>
+                <a href="sobre.html">Sobre</a>
+                <a href="projectos.html">Projectos</a>
+                <a href="habilidades.html">Habilidades</a>
+                <a href="contactos.html">Contactos</a>
+            </nav>
+            </nav>
+        </header>
+
+        <section class="projects-section" class="index.html" >
+            <h1>Meus Projetos</h1>
+
+            <div class="projects-container">
+                <div class="flip-card">
+                    <div class="flip-inner">
+                        <div class="flip-front">
+                            <img src="src/Imagens/projeto 1.png" alt="Projeto Rede - Roteadores">
+                            <div class="project-label">Rede - Roteadores</div>
+                        </div>
+                        <div class="flip-back">
+                            <h3>Configuração de Roteadores</h3>
+                            <p>Implementação de topologia LAN/WAN com roteadores físicos, configuração de rotas estáticas e DHCP para otimizar o tráfego na rede.</p>
+                            <div class="meta">Ferramentas/Equipamento: Cisco/TP-Link, cabos UTP, topologia em estrela</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flip-card">
+                    <div class="flip-inner">
+                        <div class="flip-front">
+                            <img src="src/Imagens/Projeto 2.png" alt="Projeto Rede - VLANs">
+                            <div class="project-label">Rede - VLANs</div>
+                        </div>
+                        <div class="flip-back">
+                            <h3>Montagem/Configuração de VLANs</h3>
+                            <p>Instalação e configuração de switches, segmentação de rede por VLANs, e políticas de segurança para isolar redes e melhorar performance.</p>
+                            <div class="meta">Atividades: VLAN tagging, trunk/ access ports, teste de conectividade</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flip-card">
+                    <div class="flip-inner">
+                        <div class="flip-front">
+                            <img src="src/Imagens/Projeto 3.png" alt="Montagem de computadores">
+                            <div class="project-label">Montagem - Sala Hardware</div>
+                        </div>
+                        <div class="flip-back">
+                            <h3>Montagem de Computadores</h3>
+                            <p>Montagem física e configuração de estações de trabalho: montagem de componentes, formatação, instalação de SO e testes funcionais em laboratório/sala de hardware.</p>
+                            <div class="meta">Ambiente: Sala de hardware — testes, benchmarks, configuração BIOS/UEFI</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // Menu Hamburger
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navbar = document.getElementById('navbar');
+        
+        mobileMenu.addEventListener('click', function() {
+            this.classList.toggle('active');
+            navbar.classList.toggle('active');
+        });
+        
+        // Fechar menu ao clicar em um link
+        const navLinks = document.querySelectorAll('.navbar a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+                navbar.classList.remove('active');
+            });
+        });
+        
+        // Fechar menu ao clicar fora dele
+        document.addEventListener('click', (e) => {
+            if (!navbar.contains(e.target) && !mobileMenu.contains(e.target)) {
+                mobileMenu.classList.remove('active');
+                navbar.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>
